@@ -1,0 +1,17 @@
+.label {
+  display: flex;
+  flex-direction: column;
+  span {
+    font-size: 20px;
+  }
+}
+
+.input {
+  background-color: transparent;
+  font-size: 18px;
+  color: #000;
+  width: 380px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 7px 13px;
+}
