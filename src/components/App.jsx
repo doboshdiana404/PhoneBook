@@ -1,8 +1,9 @@
 import './App.css';
-import ContactForm from './assets/ContactForm/ContactForm.jsx';
-import ContactList from './assets/ContactList/ContactList.jsx';
-import SearchBox from './assets/SearchBox/SearchBox.jsx';
 import { useState, useEffect } from 'react';
+import ContactForm from './ContactForm/ContactForm.jsx';
+import ContactList from './ContactList/ContactList.jsx';
+import SearchBox from './SearchBox/SearchBox.jsx';
+
 function App() {
   const contactDefault = [
     { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
