@@ -25,6 +25,7 @@
 .navlist {
   display: flex;
   gap: 20px;
+  align-items: center;
 }
 
 .active {
@@ -37,4 +38,6 @@
 .active::after {
   width: 100%;
   left: 0;
+}
+.userName {
 }

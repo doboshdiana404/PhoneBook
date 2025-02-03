@@ -5,6 +5,7 @@ import {
   editContactThunk,
   fetchContacts,
 } from './operations';
+import { logoutThunk } from '../auth/operations';
 
 const initialState = {
   contacts: {
@@ -44,7 +45,14 @@ const slice = createSlice({
         const item = state.contacts.items.find(
           item => item.id === action.payload.id
         );
-        item.name = action.payload.name;
+        if (item) {
+          item.name = action.payload.name;
+        }
+      })
+      .addCase(logoutThunk.fulfilled, state => {
+        state.contacts.items = [];
+        state.contacts.loading = false;
+        state.contacts.error = null;
       });
   },
 });
