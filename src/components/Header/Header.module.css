@@ -26,8 +26,8 @@
   display: flex;
   gap: 20px;
   align-items: center;
+  flex-direction: column;
 }
-
 .active {
   color: #015c92;
   font-weight: bold;
@@ -39,5 +39,79 @@
   width: 100%;
   left: 0;
 }
-.userName {
+
+/* Меню для великих екранів */
+.desktopMenu {
+  display: none;
+}
+
+/* Кнопка меню (гамбургер) */
+.menuToggle {
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: black;
+  cursor: pointer;
+}
+
+/* Мобільне меню (спочатку приховане) */
+.mobileMenu {
+  display: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 97px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+  color: white;
+}
+
+.mobileMenu.open {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.mobileMenu li {
+  padding: 15px;
+}
+
+.mobileMenu li a {
+  color: white;
+  text-decoration: none;
+}
+.navMobileLink {
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  border: none;
+  font-weight: 400;
+  background-color: transparent;
+}
+/* Адаптація для великих екранів */
+@media (min-width: 768px) {
+  .menuToggle {
+    display: none;
+  }
+
+  .mobileMenu {
+    display: none;
+  }
+  .navlist {
+    flex-direction: row;
+  }
+  .desktopMenu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .mobileMenu.open {
+    display: none;
+  }
 }

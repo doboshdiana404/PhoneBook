@@ -6,15 +6,10 @@ const UserMenu = ({ s }) => {
 
   return (
     <div>
-      {/* {user && (
-        <span
-          className={s.userName}
-          style={{ cursor: 'pointer', marginRight: '10px' }}
-        >
-          Welcome, {user.name}
-        </span>
-      )} */}
-      <button className={s.navlink} onClick={() => dispatch(logoutThunk())}>
+      <button
+        className={s.navMobileLink}
+        onClick={() => dispatch(logoutThunk())}
+      >
         Logout
       </button>
     </div>
