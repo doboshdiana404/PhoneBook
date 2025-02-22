@@ -114,4 +114,7 @@
   .mobileMenu.open {
     display: none;
   }
+  .navMobileLink {
+    color: #212529;
+  }
 }
