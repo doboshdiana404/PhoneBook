@@ -6,12 +6,13 @@ import clsx from 'clsx';
 import AuthNav from '../AuthNav/AuthNav';
 import Navigation from '../Navigation/Navigation';
 import UserMenu from '../UserMenu/UserMenu';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { FaUserCircle } from 'react-icons/fa';
 
 const AppBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const menuRef = useRef(null); // Додаємо ref для мобільного меню
 
   const buildLinkClass = ({ isActive }) => {
     return clsx(s.navlink, isActive && s.active);
@@ -21,7 +22,22 @@ const AppBar = () => {
   };
 
   const user = useSelector(selectUser);
+  // Додаємо обробник кліку поза меню
+  const handleClickOutside = event => {
+    if (menuRef.current && !menuRef.current.contains(event.target)) {
+      setIsOpen(false); // Закриваємо меню, якщо клікнули поза
+    }
+  };
 
+  useEffect(() => {
+    // Додаємо подію на кліки по всьому документу
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      // Очищаємо подію, коли компонент буде розмонтовуватися
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -76,6 +92,7 @@ const AppBar = () => {
           style={{ pointerEvents: isOpen ? 'auto' : 'none' }}
           className={`${s.mobileMenu} ${isOpen ? s.open : ''}`}
           onClick={() => setIsOpen(false)}
+          ref={menuRef}
         >
           {user && isLoggedIn && (
             <motion.div
